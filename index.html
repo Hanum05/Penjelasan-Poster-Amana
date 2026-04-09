@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMANA - Islamic Finance in Digital Era</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#ffe4e6', // pink-100
+                            DEFAULT: '#db2777', // pink-600
+                            dark: '#831843', // pink-900
+                            accent: '#f472b6', // pink-400
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdf2f8; /* Soft pink background */
+            scroll-behavior: smooth;
+        }
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(219, 39, 119, 0.3); /* Pink shadow */
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Header / Navbar -->
+    <nav class="bg-brand-dark text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-widest uppercase">AMANA</h1>
+            <p class="text-sm text-pink-200 hidden md:block">Akselerasi Finansial Syariah di Era Digital</p>
+        </div>
+    </nav>
+
+    <!-- Poster Section -->
+    <section class="w-full relative flex justify-center items-center overflow-hidden bg-brand-dark">
+        <!-- Latar belakang poster yang di-blur -->
+        <div class="absolute inset-0 z-0 bg-[url('poster.png')] bg-cover bg-center blur-2xl scale-110 opacity-60"></div>
+        
+        <!-- Lapisan gelap tipis agar poster utama tetap stand out -->
+        <div class="absolute inset-0 z-0 bg-black/20"></div>
+
+        <!-- Gambar poster utama -->
+        <img src="poster.png" alt="Poster AMANA" class="relative z-10 w-full max-w-4xl h-auto block shadow-2xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Latar Belakang & Lomba Section -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden mb-16 border border-pink-100">
+            <div class="bg-brand text-white py-6 px-8 text-center relative overflow-hidden">
+                <!-- Dekorasi -->
+                <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+                <h2 class="text-3xl font-bold mb-2 relative z-10">Latar Belakang Proyek</h2>
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                    Karya ini dibuat untuk berpartisipasi dalam ajang perlombaan bergengsi:
+                </p>
+                <div class="inline-block bg-brand-light text-brand-dark px-6 py-4 rounded-xl mb-6">
+                    <h3 class="text-2xl font-bold">Islamic Finance Insight (IFI) 2026</h3>
+                </div>
+                <p class="text-xl font-medium text-brand">
+                    Dengan Tema:<br>
+                    <span class="text-2xl font-bold text-gray-800 mt-2 block">"Islamic Finance in the Digital Era: From Insight to Innovation"</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Penjelasan Web Section -->
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Mengenal Fitur Web AMANA</h2>
+            <div class="w-24 h-1 bg-brand mx-auto rounded-full mb-6"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Sesuai dengan tema inovasi digital, kami mengembangkan web app AMANA yang hadir sebagai solusi terpadu untuk edukasi dan pengelolaan keuangan syariah sehari-hari.
+            </p>
+        </div>
+
+        <!-- Grid Fitur -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Fitur 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-md feature-card border border-pink-50 relative overflow-hidden">
+                <div class="w-14 h-14 bg-brand-light text-brand rounded-2xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Edukasi Syariah</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Pahami konsep dasar hingga mendalam mengenai <strong>Zakat, Wakaf, dan Hak Waris</strong>. Penjelasan dikemas secara ringkas dan mudah dicerna oleh berbagai kalangan.
+                </p>
+            </div>
+
+            <!-- Fitur 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-md feature-card border border-pink-50">
+                <div class="w-14 h-14 bg-brand-light text-brand rounded-2xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-regular fa-newspaper"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Pusat Artikel</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Halaman khusus yang menyajikan berbagai artikel terkini mengenai ekonomi dan gaya hidup syariah untuk memperluas wawasan literasi keuangan Anda.
+                </p>
+            </div>
+
+            <!-- Fitur 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-md feature-card border border-pink-50 border-t-4 border-t-brand">
+                <div class="w-14 h-14 bg-brand text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md shadow-pink-300">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Kalkulator Hak Waris</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    <em>Smart Tools:</em> Rencanakan keuangan dan hitung pembagian waris secara presisi, akurat, dan tentunya sesuai dengan syariat Islam.
+                </p>
+            </div>
+
+            <!-- Fitur 4 -->
+            <div class="bg-white p-8 rounded-2xl shadow-md feature-card border border-pink-50">
+                <div class="w-14 h-14 bg-brand-light text-brand rounded-2xl flex items-center justify-center text-2xl mb-6">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-3">Manajemen Keuangan</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">
+                    Wujudkan kemandirian ekonomi! Fitur ini membantu Anda melacak, merencanakan, dan mengatur arus kas keuangan sehari-hari agar senantiasa berada di jalur ajaran Islam (Gaya hidup Thoyyib).
+                </p>
+            </div>
+
+            <!-- Fitur 5 -->
+            <div class="bg-white p-8 rounded-2xl shadow-md feature-card border border-pink-50 lg:col-span-2">
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="w-16 h-16 bg-brand-dark text-white rounded-full flex items-center justify-center text-2xl flex-shrink-0">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Kamera Cek Halal <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full ml-2 align-middle">Prototype / Pengembangan</span></h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Pindai dan pastikan kehalalan produk konsumsi Anda sehari-hari secara instan melalui pemindai logo atau komposisi. Fitur inovatif ini sedang dalam tahap pengembangan aktif untuk memberikan rasa aman dalam berbelanja.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Akses Web Section -->
+        <div class="mt-16 bg-white rounded-2xl shadow-xl border border-pink-100 p-8 md:p-12">
+            <h2 class="text-3xl font-bold text-brand-dark mb-8 text-center md:text-left border-b-2 border-brand-light pb-4">Akses Web AMANA</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                
+                <!-- Kiri: QR Code -->
+                <div class="flex flex-col items-center justify-center space-y-4 lg:col-span-1">
+                    <div class="bg-white p-4 rounded-2xl shadow-lg border-4 border-brand-light">
+                        <img src="QR Code.png" alt="QR Code Web AMANA" class="w-48 h-48 object-cover" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/db2777/ffffff?text=QR+Code.png';">
+                    </div>
+                    <p class="text-sm text-gray-500 font-medium text-center"><i class="fa-solid fa-mobile-screen-button mr-1"></i> Pindai untuk membuka di HP</p>
+                </div>
+
+                <!-- Kanan: Deskripsi & Link/Preview -->
+                <div class="lg:col-span-2 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Coba AMANA Sekarang!</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Akses purwarupa (prototype) web app AMANA secara langsung. Pindai QR Code di samping menggunakan smartphone Anda, atau lihat pratinjau web di bawah ini. Anda juga bisa membukanya di tab baru untuk pengalaman penuh.
+                    </p>
+                    
+                    <!-- Link Preview (Iframe dengan gaya mockup browser) -->
+                    <div class="w-full h-64 md:h-80 border-4 border-gray-800 rounded-xl overflow-hidden relative shadow-lg mb-6">
+                        <!-- Browser bar mockup -->
+                        <div class="bg-gray-800 w-full h-8 flex items-center px-3 space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="text-xs text-gray-400 ml-4 font-mono truncate">hanum05.github.io/AMANA/index.html</div>
+                        </div>
+                        <!-- Iframe Pratinjau Web -->
+                        <iframe src="https://hanum05.github.io/AMANA/index.html" class="w-full h-full bg-white" title="Pratinjau Web AMANA"></iframe>
+                    </div>
+
+                    <!-- Tombol Link Langsung -->
+                    <a href="https://hanum05.github.io/AMANA/index.html" target="_blank" class="inline-flex items-center justify-center gap-2 bg-brand hover:bg-brand-dark text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-300 shadow-md shadow-pink-300 w-fit">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Buka Web AMANA Secara Penuh
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Proses Pembuatan (Video Speed Draw) Section -->
+        <div class="mt-16 bg-white rounded-2xl shadow-xl border border-pink-100 p-8 md:p-12">
+            <h2 class="text-3xl font-bold text-brand-dark mb-8 text-center md:text-left border-b-2 border-brand-light pb-4">Di Balik Layar: Proses Pembuatan Poster</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                
+                <!-- Kiri: Video Speed Draw -->
+                <div class="w-full">
+                    <!-- Atribut: 
+                         - autoplay: otomatis jalan
+                         - loop: mengulang terus
+                         - muted: wajib agar autoplay diizinkan browser
+                         - controls: memunculkan tombol pause/play, timeline, dan full screen
+                    -->
+                    <video src="speed draw.mp4" autoplay loop muted controls class="w-full rounded-xl shadow-lg border-2 border-pink-200 bg-gray-100">
+                        Maaf, browser Anda tidak mendukung pemutaran video HTML5.
+                    </video>
+                </div>
+
+                <!-- Kanan: Penjelasan / Deskripsi -->
+                <div class="w-full flex flex-col justify-center h-full">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-nib text-brand"></i> Deskripsi Proses
+                    </h3>
+                    <!-- Area deskripsi yang bisa kamu isi nanti -->
+                    <div class="text-gray-600 leading-relaxed p-6 bg-brand-light/20 rounded-xl border border-pink-100 border-dashed min-h-[200px]">
+                        [Isi deskripsi mengenai proses pembuatan poster, inspirasi ide, teknik menggambar, atau detail lainnya di sini...]
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Profil Tim Section -->
+        <div class="mt-16 bg-white rounded-2xl shadow-xl border border-pink-100 p-8 md:p-12">
+            <h2 class="text-3xl font-bold text-brand-dark mb-8 text-center border-b-2 border-brand-light pb-4">Tim Pengembang AMANA</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Ketua -->
+                <div class="flex flex-col items-center bg-[#fdf2f8] p-6 rounded-xl border border-pink-100 relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 bg-brand text-white rounded-full flex items-center justify-center text-3xl mb-4 shadow-md">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <span class="bg-brand-dark text-white text-xs px-3 py-1 rounded-full absolute top-4 right-4 shadow-sm">Ketua</span>
+                    <h3 class="text-xl font-bold text-gray-800 text-center">Hanum</h3>
+                    
+                    <!-- Tombol Selengkapnya memicu toggle class 'hidden' pada div rincian -->
+                    <button onclick="document.getElementById('detail-ketua').classList.toggle('hidden')" class="mt-3 text-brand hover:text-brand-dark text-sm font-semibold flex items-center gap-1 transition-colors">
+                        Selengkapnya <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <div id="detail-ketua" class="hidden mt-4 text-sm text-gray-600 text-center w-full bg-white p-4 rounded-lg border border-pink-100 shadow-inner transition-all">
+                        <p class="mb-2"><strong class="text-gray-800">Nama Lengkap:</strong><br>Aulia Rahma Hanum</p>
+                        <p class="mb-2"><strong class="text-gray-800">Asal Institut:</strong><br>Universitas Negeri Malang</p>
+                        <p><strong class="text-gray-800">Fakultas/Jurusan:</strong><br>FMIPA/S1 Kimia</p>
+                    </div>
+                </div>
+
+                <!-- Anggota 1 -->
+                <div class="flex flex-col items-center bg-[#fdf2f8] p-6 rounded-xl border border-pink-100 relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 bg-brand-accent text-white rounded-full flex items-center justify-center text-3xl mb-4 shadow-md">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="bg-brand-accent text-white text-xs px-3 py-1 rounded-full absolute top-4 right-4 shadow-sm">Anggota 1</span>
+                    <h3 class="text-xl font-bold text-gray-800 text-center">Jasmine</h3>
+                    
+                    <button onclick="document.getElementById('detail-anggota1').classList.toggle('hidden')" class="mt-3 text-brand hover:text-brand-dark text-sm font-semibold flex items-center gap-1 transition-colors">
+                        Selengkapnya <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <div id="detail-anggota1" class="hidden mt-4 text-sm text-gray-600 text-center w-full bg-white p-4 rounded-lg border border-pink-100 shadow-inner transition-all">
+                        <p class="mb-2"><strong class="text-gray-800">Nama Lengkap:</strong><br>Jasmine Al-Izzah</p>
+                        <p class="mb-2"><strong class="text-gray-800">Asal Institut:</strong><br>Universitas Negeri Malang</p>
+                        <p><strong class="text-gray-800">Fakultas/Jurusan:</strong><br>FV/D4 Animasi</p>
+                    </div>
+                </div>
+
+                <!-- Anggota 2 -->
+                <div class="flex flex-col items-center bg-[#fdf2f8] p-6 rounded-xl border border-pink-100 relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-20 h-20 bg-brand-accent text-white rounded-full flex items-center justify-center text-3xl mb-4 shadow-md">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="bg-brand-accent text-white text-xs px-3 py-1 rounded-full absolute top-4 right-4 shadow-sm">Anggota 2</span>
+                    <h3 class="text-xl font-bold text-gray-800 text-center">Fadhly</h3>
+                    
+                    <button onclick="document.getElementById('detail-anggota2').classList.toggle('hidden')" class="mt-3 text-brand hover:text-brand-dark text-sm font-semibold flex items-center gap-1 transition-colors">
+                        Selengkapnya <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <div id="detail-anggota2" class="hidden mt-4 text-sm text-gray-600 text-center w-full bg-white p-4 rounded-lg border border-pink-100 shadow-inner transition-all">
+                        <p class="mb-2"><strong class="text-gray-800">Nama Lengkap:</strong><br>Fadhly Ramadhan Arieyanto</p>
+                        <p class="mb-2"><strong class="text-gray-800">Asal Institut:</strong><br>Universitas Terbuka</p>
+                        <p><strong class="text-gray-800">Fakultas/Jurusan:</strong><br>FST/Sistem Informasi</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-white text-center py-8 border-t-4 border-brand">
+        <p class="font-medium">Tim AMANA &copy; 2026</p>
+        <p class="text-sm text-pink-200 mt-1">Islamic Finance Insight (IFI) 2026</p>
+    </footer>
+
+</body>
+</html>
