@@ -423,24 +423,9 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-brand-dark text-white text-center py-8 border-t-4 border-brand">
-        <p class="font-medium">Tim SapuArus &copy; 2026</p>
-        <p class="text-sm text-pink-200 mt-1">Islamic Finance Insight (IFI) 2026</p>
-    </footer>
-
-    <!-- Lightbox Modal untuk Zoom Poster -->
-    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex-col">
-        <!-- Header Controls -->
-        <div class="absolute top-0 right-0 p-4 md:p-6 flex gap-3 z-[110] w-full justify-end bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
-            <button onclick="zoomIn()" class="pointer-events-auto text-white hover:text-brand bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
-            <button onclick="zoomOut()" class="pointer-events-auto text-white hover:text-brand bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
-            <button onclick="closeLightbox()" class="pointer-events-auto text-white hover:text-red-500 bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg ml-4" title="Tutup"><i class="fa-solid fa-xmark text-xl"></i></button>
-        </div>
-        
-        <!-- Container Scrollable -->
-        <div id="lightbox-container" class="w-full h-full overflow-auto flex items-center justify-center relative select-none">
-            <img src="poster.png" id="lightbox-img" class="h-screen w-auto max-w-none transition-all duration-200 cursor-zoom-in" alt="Poster Full AMANA" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+        <!-- Container Scrollable (Diubah overflow-hidden agar scroll native hilang) -->
+        <div id="lightbox-container" class="w-full h-full overflow-hidden flex items-center justify-center relative select-none">
+            <img src="poster.png" id="lightbox-img" class="h-screen w-auto max-w-none transition-transform duration-200 cursor-zoom-in" alt="Poster Full AMANA" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
         </div>
     </div>
 
@@ -451,6 +436,8 @@
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxContainer = document.getElementById('lightbox-container');
         let zoomLevel = 1;
+        let panX = 0;  // Posisi geser X
+        let panY = 0;  // Posisi geser Y
 
         function openLightbox() {
             lightbox.classList.remove('hidden');
@@ -459,7 +446,9 @@
             lightbox.classList.remove('opacity-0');
             document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
             zoomLevel = 1;
-            updateZoom();
+            panX = 0;
+            panY = 0;
+            updateTransform();
         }
 
         function closeLightbox() {
@@ -473,28 +462,30 @@
         function zoomIn() {
             zoomLevel += 0.25; // Dibuat lebih kecil agar scroll wheel lebih halus
             if (zoomLevel > 4) zoomLevel = 4; // Maksimal zoom 4x
-            updateZoom();
+            updateTransform();
         }
 
         function zoomOut() {
             zoomLevel -= 0.25;
-            if (zoomLevel < 1) zoomLevel = 1; // Minimal zoom 1x (pas layar)
-            updateZoom();
+            if (zoomLevel <= 1) {
+                zoomLevel = 1; // Minimal zoom 1x (pas layar)
+                panX = 0; // Kembalikan posisi ke tengah layar saat ukuran normal
+                panY = 0;
+            }
+            updateTransform();
         }
 
-        function updateZoom() {
-            lightboxImg.style.height = `${zoomLevel * 100}vh`;
+        function updateTransform() {
+            // Menggunakan CSS Transform untuk kebebasan geser mutlak (pan bebas)
+            lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
             
             if (zoomLevel > 1) {
                 lightboxImg.classList.remove('cursor-zoom-in');
                 lightboxImg.classList.add('cursor-grab');
-                lightboxContainer.classList.remove('items-center');
-                lightboxContainer.classList.add('items-start'); // Agar gambar memanjang dari atas ke bawah
             } else {
                 lightboxImg.classList.add('cursor-zoom-in');
                 lightboxImg.classList.remove('cursor-grab');
-                lightboxContainer.classList.add('items-center');
-                lightboxContainer.classList.remove('items-start');
+                lightboxImg.classList.remove('cursor-grabbing');
             }
         }
 
@@ -508,43 +499,52 @@
             }
         }, { passive: false });
 
-        // Fitur Drag to Scroll untuk Desktop (Klik dan Tahan untuk Menggeser)
+        // Fitur Drag Bebas untuk Desktop (Sistem Panning Mutlak)
         let isDraggingLightbox = false;
-        let startX, startY, scrollLeft, scrollTop;
+        let startX, startY;
 
         lightboxContainer.addEventListener('mousedown', (e) => {
             if (zoomLevel <= 1) return;
             e.preventDefault(); // Mencegah "native image drag" bawaan browser yang mengganggu
             isDraggingLightbox = true;
+            
+            // Matikan animasi transisi sementara agar gambar instan mengikuti kursor mouse (lebih responsif)
+            lightboxImg.style.transition = 'none';
+            
             lightboxImg.classList.remove('cursor-grab');
             lightboxImg.classList.add('cursor-grabbing');
-            startX = e.pageX - lightboxContainer.offsetLeft;
-            startY = e.pageY - lightboxContainer.offsetTop;
-            scrollLeft = lightboxContainer.scrollLeft;
-            scrollTop = lightboxContainer.scrollTop;
+            
+            startX = e.clientX - panX;
+            startY = e.clientY - panY;
         });
 
         lightboxContainer.addEventListener('mouseleave', () => {
-            isDraggingLightbox = false;
-            lightboxImg.classList.remove('cursor-grabbing');
-            if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+            if (isDraggingLightbox) {
+                isDraggingLightbox = false;
+                lightboxImg.style.transition = 'transform 0.2s ease-out'; // Hidupkan animasi lagi
+                lightboxImg.classList.remove('cursor-grabbing');
+                if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+            }
         });
 
         lightboxContainer.addEventListener('mouseup', () => {
-            isDraggingLightbox = false;
-            lightboxImg.classList.remove('cursor-grabbing');
-            if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+            if (isDraggingLightbox) {
+                isDraggingLightbox = false;
+                lightboxImg.style.transition = 'transform 0.2s ease-out'; // Hidupkan animasi lagi
+                lightboxImg.classList.remove('cursor-grabbing');
+                if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+            }
         });
 
         lightboxContainer.addEventListener('mousemove', (e) => {
             if (!isDraggingLightbox) return;
             e.preventDefault();
-            const x = e.pageX - lightboxContainer.offsetLeft;
-            const y = e.pageY - lightboxContainer.offsetTop;
-            const walkX = (x - startX) * 2; // Sensitivitas geser
-            const walkY = (y - startY) * 2;
-            lightboxContainer.scrollLeft = scrollLeft - walkX;
-            lightboxContainer.scrollTop = scrollTop - walkY;
+            
+            panX = e.clientX - startX;
+            panY = e.clientY - startY;
+            
+            // Terapkan posisi pergeseran tanpa delay
+            lightboxImg.style.transform = `translate(${panX}px, ${panY}px) scale(${zoomLevel})`;
         });
 
         // Klik gambar untuk zoom-in cepat jika masih 1x
