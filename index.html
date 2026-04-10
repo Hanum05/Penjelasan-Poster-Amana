@@ -63,21 +63,44 @@
     </nav>
 
     <!-- Poster Section -->
-    <section class="w-full relative flex justify-center items-center overflow-hidden bg-brand-dark">
+    <section class="w-full relative flex justify-center items-center overflow-hidden bg-brand-dark py-16">
         <!-- Latar belakang poster yang di-blur -->
-        <div class="absolute inset-0 z-0 bg-[url('poster.png')] bg-cover bg-center blur-2xl scale-110 opacity-60"></div>
+        <div class="absolute inset-0 z-0 bg-[url('poster.png')] bg-cover bg-center blur-2xl scale-110 opacity-40"></div>
         
         <!-- Lapisan gelap tipis agar poster utama tetap stand out -->
-        <div class="absolute inset-0 z-0 bg-black/20"></div>
+        <div class="absolute inset-0 z-0 bg-black/40"></div>
 
-        <!-- Gambar poster utama dengan tombol zoom -->
-        <div class="relative z-10 w-full max-w-4xl group">
-            <img src="poster.png" alt="Poster AMANA" class="w-full h-auto block shadow-2xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+        <!-- Container untuk 2 Poster -->
+        <div class="relative z-10 w-full max-w-5xl flex flex-col md:flex-row justify-center items-center gap-12 md:gap-20 px-6">
             
-            <!-- Tombol Zoom -->
-            <button onclick="openLightbox()" class="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-brand/90 hover:bg-brand text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg shadow-pink-500/50 flex items-center justify-center transition-all duration-300 transform hover:scale-110 opacity-80 hover:opacity-100 z-20" title="Lihat Layar Penuh">
-                <i class="fa-solid fa-expand text-xl md:text-2xl"></i>
-            </button>
+            <!-- Poster Kiri (A3) -->
+            <div class="w-full max-w-[320px] md:max-w-sm flex flex-col items-center group">
+                <div class="relative w-full">
+                    <img src="posterA3.png" alt="Poster AMANA A3" class="w-full h-auto block shadow-2xl border-4 border-white/10 rounded-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1131/db2777/ffffff?text=Poster+A3';">
+                    
+                    <!-- Tombol Zoom -->
+                    <button onclick="openLightbox('posterA3.png')" class="absolute bottom-4 right-4 bg-brand/90 hover:bg-brand text-white w-12 h-12 rounded-full shadow-lg shadow-pink-500/50 flex items-center justify-center transition-all duration-300 transform hover:scale-110 opacity-80 hover:opacity-100 z-20" title="Lihat Layar Penuh A3">
+                        <i class="fa-solid fa-expand text-xl"></i>
+                    </button>
+                </div>
+                <!-- Keterangan Singkat -->
+                <p class="mt-5 text-white font-bold text-xl tracking-widest bg-black/60 px-8 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-lg">A3</p>
+            </div>
+
+            <!-- Poster Kanan (A4) -->
+            <div class="w-full max-w-[320px] md:max-w-sm flex flex-col items-center group">
+                <div class="relative w-full">
+                    <img src="poster.png" alt="Poster AMANA A4" class="w-full h-auto block shadow-2xl border-4 border-white/10 rounded-sm" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1131/db2777/ffffff?text=Poster+A4';">
+                    
+                    <!-- Tombol Zoom -->
+                    <button onclick="openLightbox('poster.png')" class="absolute bottom-4 right-4 bg-brand/90 hover:bg-brand text-white w-12 h-12 rounded-full shadow-lg shadow-pink-500/50 flex items-center justify-center transition-all duration-300 transform hover:scale-110 opacity-80 hover:opacity-100 z-20" title="Lihat Layar Penuh A4">
+                        <i class="fa-solid fa-expand text-xl"></i>
+                    </button>
+                </div>
+                <!-- Keterangan Singkat -->
+                <p class="mt-5 text-white font-bold text-xl tracking-widest bg-black/60 px-8 py-2 rounded-full backdrop-blur-md border border-white/20 shadow-lg">A4</p>
+            </div>
+
         </div>
     </section>
 
@@ -265,7 +288,7 @@
                             
                             <!-- Paragraf Penjelasan -->
                             <p>
-                                Proses pembuatan poster AMANA dimulai dari eksplorasi konsep melalui sketsa kasar dan uji coba pewarnaan awal untuk menemukan nuansa yang tepat. Setelah arah visual disepakati, garis sketsa dipertegas dan dipisahkan menjadi beberapa layer elemen menggunakan metode warna abu-abu (grayscale) agar pengerjaan lebih terstruktur. Tahap selanjutnya adalah penerapan warna dasar (base color) yang kemudian dihidupkan melalui penambahan efek bayangan dasar (shading) serta pencahayaan (lighting dan highlight) untuk memberikan dimensi yang realistis. Memasuki tahap komposisi, tata letak setiap elemen disusun sedemikian rupa dan disesuaikan presisinya menggunakan panduan grid desain. Sebagai sentuhan akhir, keseluruhan karya melalui proses rendering, penambahan detail ekstra, dan tahap penyelesaian (finishing) hingga menghasilkan visual poster yang utuh, menarik, dan profesional.
+                                Proses pembuatan poster AMANA dimulai dari eksplorasi konsep melalui sketsa kasar dan uji coba pewarnaan awal untuk menemukan nuansa yang tepat. Setelah arah visual disepakati, garis sketsa dipertegas dan dipisahkan menjadi beberapa layer elemen menggunakan metode warna abu-abu (grayscale) agar pengerjaan lebih terstruktur. Tahap selanjutnya adalah penerapan warna dasar (base color) yang kemudian dihidupkan melalui penambahan efek bayangan dasar (shading) serta pencahayaan (lighting dan highlight) untuk memberikan dimensi yang realistis. Memasuki tahap komposisi, tata letak setiap elemen disusun sedemikian rupa dan disesuaikan presisinya menggunakan panduan grid desain. Menjelang tahap akhir, dilakukan revisi pengubahan ukuran kanvas dari A4 menjadi A3 karena adanya kesalahan perhitungan awal, sekaligus untuk menyesuaikan dengan spesifikasi peraturan lomba yang berlaku. Sebagai sentuhan pamungkas, keseluruhan karya melalui proses rendering, penambahan detail ekstra, dan tahap penyelesaian (finishing) hingga menghasilkan visual poster yang utuh, menarik, dan profesional.
                             </p>
                         </div>
                     </div>
@@ -347,6 +370,12 @@
                         <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
                             <img src="proses11.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 11" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+11'">
                             <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">11. Rendering & Finishing</p>
+                        </div>
+
+                        <!-- Gambar 12 (Khusus A3 - Menggunakan w-auto agar proporsi aslinya terlihat dan tidak terpotong) -->
+                        <div class="shrink-0 w-auto flex flex-col gap-3 group">
+                            <img src="proses12.png" draggable="false" class="h-80 md:h-96 w-auto object-contain bg-white shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 12" onerror="this.src='https://via.placeholder.com/450x500/fdf2f8/db2777?text=Proses+12+(A3)'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">12. Revisi Ukuran A4 ke A3</p>
                         </div>
 
                     </div>
@@ -459,7 +488,10 @@
         let isDraggingLightbox = false;
         let startX, startY;
 
-        function openLightbox() {
+        // Fungsi openLightbox sekarang menerima parameter sumber gambar
+        function openLightbox(imgSrc) {
+            lightboxImg.src = imgSrc; // Setel gambar sesuai poster mana yang di klik
+            
             lightbox.classList.remove('hidden');
             void lightbox.offsetWidth; // Trigger reflow
             lightbox.classList.remove('opacity-0');
