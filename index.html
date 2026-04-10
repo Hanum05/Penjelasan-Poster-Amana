@@ -248,50 +248,102 @@
                     </div>
                 </div>
 
-                <!-- Kanan: Penjelasan / Deskripsi & Galeri -->
+                <!-- Kanan: Penjelasan / Deskripsi -->
                 <div class="w-full flex flex-col justify-start h-full">
                     
                     <!-- Area Deskripsi -->
-                    <div class="mb-8">
+                    <div class="mb-8 h-full">
                         <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
                             <i class="fa-solid fa-pen-nib text-brand"></i> Deskripsi
                         </h3>
-                        <div class="text-gray-600 leading-relaxed text-justify p-6 bg-brand-light/20 rounded-xl border border-pink-100 border-dashed min-h-[200px]">
-                            [Isi deskripsi mengenai proses pembuatan poster, inspirasi ide, teknik menggambar, atau detail lainnya di sini...]
-                        </div>
-                    </div>
-
-                    <!-- Galeri Proses (Berjalan Otomatis) dipindah ke sini -->
-                    <div class="w-full">
-                        <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <i class="fa-regular fa-images text-brand"></i> Cuplikan Langkah Pembuatan
-                        </h4>
-                        <div class="relative w-full">
-                            <!-- Container galeri dengan gap diperkecil sedikit -->
-                            <div id="gallery-container" class="flex gap-3 overflow-x-auto pb-4 hide-scrollbar">
-                                
-                                <!-- Gambar 1 (Ukuran disesuaikan h-32 md:h-40 agar proporsional di samping video) -->
-                                <img src="proses1.png" class="h-32 md:h-40 w-auto min-w-[120px] object-cover rounded-xl shrink-0 shadow-sm cursor-pointer hover:shadow-md transition-shadow" alt="Proses 1" onerror="this.src='https://via.placeholder.com/200x250/fdf2f8/db2777?text=Proses+1'">
-
-                                <!-- Gambar 2 -->
-                                <img src="proses2.png" class="h-32 md:h-40 w-auto min-w-[120px] object-cover rounded-xl shrink-0 shadow-sm cursor-pointer hover:shadow-md transition-shadow" alt="Proses 2" onerror="this.src='https://via.placeholder.com/200x250/fdf2f8/db2777?text=Proses+2'">
-
-                                <!-- Gambar 3 -->
-                                <img src="proses3.png" class="h-32 md:h-40 w-auto min-w-[120px] object-cover rounded-xl shrink-0 shadow-sm cursor-pointer hover:shadow-md transition-shadow" alt="Proses 3" onerror="this.src='https://via.placeholder.com/200x250/fdf2f8/db2777?text=Proses+3'">
-
-                                <!-- Gambar 4 -->
-                                <img src="proses4.png" class="h-32 md:h-40 w-auto min-w-[120px] object-cover rounded-xl shrink-0 shadow-sm cursor-pointer hover:shadow-md transition-shadow" alt="Proses 4" onerror="this.src='https://via.placeholder.com/200x250/fdf2f8/db2777?text=Proses+4'">
-
-                                <!-- Gambar 5 -->
-                                <img src="proses5.png" class="h-32 md:h-40 w-auto min-w-[120px] object-cover rounded-xl shrink-0 shadow-sm cursor-pointer hover:shadow-md transition-shadow" alt="Proses 5" onerror="this.src='https://via.placeholder.com/200x250/fdf2f8/db2777?text=Proses+5'">
-
-                            </div>
+                        <div class="text-gray-600 leading-relaxed text-justify p-6 bg-brand-light/20 rounded-xl border border-pink-100 border-dashed h-full min-h-[200px]">
+                            Proses pembuatan poster AMANA dimulai dari eksplorasi konsep melalui sketsa kasar dan uji coba pewarnaan awal untuk menemukan nuansa yang tepat. Setelah arah visual disepakati, garis sketsa dipertegas dan dipisahkan menjadi beberapa layer elemen menggunakan metode warna abu-abu (grayscale) agar pengerjaan lebih terstruktur. Tahap selanjutnya adalah penerapan warna dasar (base color) yang kemudian dihidupkan melalui penambahan efek bayangan dasar (shading) serta pencahayaan (lighting dan highlight) untuk memberikan dimensi yang realistis. Memasuki tahap komposisi, tata letak setiap elemen disusun sedemikian rupa dan disesuaikan presisinya menggunakan panduan grid desain. Sebagai sentuhan akhir, keseluruhan karya melalui proses rendering, penambahan detail ekstra, dan tahap penyelesaian (finishing) hingga menghasilkan visual poster yang utuh, menarik, dan profesional.
                         </div>
                     </div>
 
                 </div>
 
             </div>
+
+            <!-- Galeri Proses (Berjalan Otomatis) dipindah ke bawah Video & Deskripsi -->
+            <div class="mt-8 pt-8 border-t-2 border-brand-light border-dashed w-full">
+                <h4 class="text-xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-2">
+                    <i class="fa-regular fa-images text-brand"></i> Cuplikan Langkah Pembuatan
+                </h4>
+                <div class="relative w-full">
+                    <!-- Container galeri (Ditambah cursor-grab agar tahu bisa digeser) -->
+                    <div id="gallery-container" class="flex gap-4 overflow-x-auto pb-6 hide-scrollbar items-start cursor-grab select-none">
+                        
+                        <!-- Gambar 1 (Ukuran diperbesar w-60/72 dan h-80/96, ditambah draggable="false") -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses1.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 1" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+1'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">1. Konsep Sketsa Awal</p>
+                        </div>
+
+                        <!-- Gambar 2 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses2.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 2" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+2'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">2. Konsep Pewarnaan Awal</p>
+                        </div>
+
+                        <!-- Gambar 3 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses3.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 3" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+3'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">3. Penegasan Garis Sketsa</p>
+                        </div>
+
+                        <!-- Gambar 4 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses4.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 4" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+4'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">4. Pemisahan Layer (Grayscale)</p>
+                        </div>
+
+                        <!-- Gambar 5 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses5.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 5" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+5'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">5. Penerapan Warna Dasar</p>
+                        </div>
+
+                        <!-- Gambar 6 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses6.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 6" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+6'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">6. Penambahan Bayangan Dasar</p>
+                        </div>
+
+                        <!-- Gambar 7 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses7.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 7" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+7'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">7. Penerapan Efek Pencahayaan</p>
+                        </div>
+
+                        <!-- Gambar 8 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses8.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 8" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+8'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">8. Penguatan Intensitas Cahaya</p>
+                        </div>
+
+                        <!-- Gambar 9 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses9.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 9" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+9'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">9. Penyusunan Tata Letak Dasar</p>
+                        </div>
+
+                        <!-- Gambar 10 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses10.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 10" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+10'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">10. Penyesuaian dengan Grid Desain</p>
+                        </div>
+
+                        <!-- Gambar 11 -->
+                        <div class="shrink-0 w-60 md:w-72 flex flex-col gap-3 group">
+                            <img src="proses11.png" draggable="false" class="h-80 md:h-96 w-full object-cover shadow-md group-hover:shadow-xl transition-shadow border border-pink-100" alt="Langkah 11" onerror="this.src='https://via.placeholder.com/400x500/fdf2f8/db2777?text=Proses+11'">
+                            <p class="text-xs md:text-sm text-gray-700 font-medium text-center leading-snug">11. Rendering & Finishing</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Profil Tim Section -->
@@ -410,13 +462,13 @@
         }
 
         function zoomIn() {
-            zoomLevel += 0.5;
-            if (zoomLevel > 3.5) zoomLevel = 3.5; // Maksimal zoom 3.5x
+            zoomLevel += 0.25; // Dibuat lebih kecil agar scroll wheel lebih halus
+            if (zoomLevel > 4) zoomLevel = 4; // Maksimal zoom 4x
             updateZoom();
         }
 
         function zoomOut() {
-            zoomLevel -= 0.5;
+            zoomLevel -= 0.25;
             if (zoomLevel < 1) zoomLevel = 1; // Minimal zoom 1x (pas layar)
             updateZoom();
         }
@@ -437,12 +489,23 @@
             }
         }
 
+        // Fitur Zoom dengan Scroll Wheel Mouse
+        lightboxContainer.addEventListener('wheel', (e) => {
+            e.preventDefault(); // Mencegah halaman scroll ke bawah saat menggunakan wheel
+            if (e.deltaY < 0) {
+                zoomIn(); // Scroll ke atas = Zoom In
+            } else {
+                zoomOut(); // Scroll ke bawah = Zoom Out
+            }
+        }, { passive: false });
+
         // Fitur Drag to Scroll untuk Desktop (Klik dan Tahan untuk Menggeser)
         let isDraggingLightbox = false;
         let startX, startY, scrollLeft, scrollTop;
 
         lightboxContainer.addEventListener('mousedown', (e) => {
             if (zoomLevel <= 1) return;
+            e.preventDefault(); // Mencegah "native image drag" bawaan browser yang mengganggu
             isDraggingLightbox = true;
             lightboxImg.classList.remove('cursor-grab');
             lightboxImg.classList.add('cursor-grabbing');
@@ -479,6 +542,7 @@
         lightboxImg.addEventListener('click', () => {
             if (zoomLevel === 1) {
                 zoomIn();
+                zoomIn(); // Langsung zoom lumayan besar saat diklik pertama kali
             }
         });
 
@@ -486,6 +550,9 @@
         // === LOGIKA AUTO SCROLL GALERI ===
         const gallery = document.getElementById('gallery-container');
         let isHovered = false;
+        let isDraggingGallery = false;
+        let startXGallery;
+        let scrollLeftGallery;
         let animationId;
 
         // Menggandakan (clone) isi galeri agar efek loopnya mulus tanpa putus
@@ -494,7 +561,8 @@
 
         // Menggunakan requestAnimationFrame untuk pergerakan yang sangat mulus (60fps)
         function autoScroll() {
-            if (!isHovered) {
+            // Hanya jalan otomatis jika tidak di-hover DAN tidak sedang di-drag
+            if (!isHovered && !isDraggingGallery) {
                 gallery.scrollLeft += 1; // Kecepatan geser (1 piksel per frame)
                 
                 // Jika sudah melewati separuh jalan (panjang asli), kembalikan ke titik 0 tanpa ketahuan
@@ -508,13 +576,41 @@
         // Mulai animasi
         autoScroll();
 
-        // Pause animasi ketika cursor ditaruh di atas gambar (agar bisa digeser manual)
+        // Mencegah auto-scroll saat hover
         gallery.addEventListener('mouseenter', () => isHovered = true);
-        gallery.addEventListener('mouseleave', () => isHovered = false);
+        gallery.addEventListener('mouseleave', () => {
+            isHovered = false;
+            isDraggingGallery = false; // Batalkan drag jika kursor keluar dari galeri
+            gallery.classList.remove('cursor-grabbing');
+            gallery.classList.add('cursor-grab');
+        });
         
         // Dukungan pause untuk sentuhan di HP
         gallery.addEventListener('touchstart', () => isHovered = true, {passive: true});
         gallery.addEventListener('touchend', () => isHovered = false);
+
+        // === FITUR DRAG UNTUK MENGGESER GALERI (MOUSE) ===
+        gallery.addEventListener('mousedown', (e) => {
+            isDraggingGallery = true;
+            gallery.classList.remove('cursor-grab');
+            gallery.classList.add('cursor-grabbing');
+            startXGallery = e.pageX - gallery.offsetLeft;
+            scrollLeftGallery = gallery.scrollLeft;
+        });
+
+        gallery.addEventListener('mouseup', () => {
+            isDraggingGallery = false;
+            gallery.classList.remove('cursor-grabbing');
+            gallery.classList.add('cursor-grab');
+        });
+
+        gallery.addEventListener('mousemove', (e) => {
+            if (!isDraggingGallery) return;
+            e.preventDefault(); // Mencegah highlight teks/gambar bawaan
+            const x = e.pageX - gallery.offsetLeft;
+            const walk = (x - startXGallery) * 1.5; // Angka 1.5 = Sensitivitas geser
+            gallery.scrollLeft = scrollLeftGallery - walk;
+        });
     </script>
 
 </body>
