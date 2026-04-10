@@ -205,29 +205,31 @@
             </div>
         </div>
 
-        <!-- Proses Pembuatan (Video Speed Draw) Section -->
+        <!-- Proses Pembuatan (Deskripsi & Video) Section -->
         <div class="mt-16 bg-white rounded-2xl shadow-xl border border-pink-100 p-8 md:p-12">
             <h2 class="text-3xl font-bold text-brand-dark mb-8 text-center md:text-left border-b-2 border-brand-light pb-4">Di Balik Layar: Proses Pembuatan Poster</h2>
+            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 
-                <!-- Kiri: Video Speed Draw -->
-                <div class="w-full aspect-video">
-                    <!-- Pastikan selalu menggunakan format /embed/ seperti di bawah ini -->
-                    <iframe 
-                        class="w-full h-full rounded-xl shadow-lg border-2 border-pink-200"
-                        src="https://youtu.be/qTr2x78_u4k?si=BiDfQJCjLOy2wIjS" 
-                        title="Proses Pembuatan Poster" 
-                        frameborder="0" 
-                        allowfullscreen>
-                    </iframe>
+                <!-- Kiri: Video (Menggunakan pola rasio 16:9 yang kokoh) -->
+                <div class="w-full">
+                    <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-pink-100">
+                        <div class="relative pb-[56.25%] h-0">
+                            <!-- Link video diganti ke ID Z6vr-VGwYyU sesuai permintaan -->
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Z6vr-VGwYyU" title="Proses Pembuatan Poster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <div class="p-4 bg-[#fdf2f8]">
+                            <h5 class="font-bold text-gray-800 mb-1 text-sm">Video Speed Draw Poster</h5>
+                            <p class="text-xs text-brand font-medium">Sumber: YouTube (Link Sementara)</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Kanan: Penjelasan / Deskripsi -->
                 <div class="w-full flex flex-col justify-center h-full">
                     <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-pen-nib text-brand"></i> Deskripsi Proses
+                        <i class="fa-solid fa-pen-nib text-brand"></i> Deskripsi
                     </h3>
-                    <!-- Area deskripsi yang bisa kamu isi nanti -->
                     <div class="text-gray-600 leading-relaxed p-6 bg-brand-light/20 rounded-xl border border-pink-100 border-dashed min-h-[200px]">
                         [Isi deskripsi mengenai proses pembuatan poster, inspirasi ide, teknik menggambar, atau detail lainnya di sini...]
                     </div>
