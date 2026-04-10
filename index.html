@@ -70,8 +70,15 @@
         <!-- Lapisan gelap tipis agar poster utama tetap stand out -->
         <div class="absolute inset-0 z-0 bg-black/20"></div>
 
-        <!-- Gambar poster utama -->
-        <img src="poster.png" alt="Poster AMANA" class="relative z-10 w-full max-w-4xl h-auto block shadow-2xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+        <!-- Gambar poster utama dengan tombol zoom -->
+        <div class="relative z-10 w-full max-w-4xl group">
+            <img src="poster.png" alt="Poster AMANA" class="w-full h-auto block shadow-2xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+            
+            <!-- Tombol Zoom -->
+            <button onclick="openLightbox()" class="absolute bottom-6 right-6 md:bottom-8 md:right-8 bg-brand/90 hover:bg-brand text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg shadow-pink-500/50 flex items-center justify-center transition-all duration-300 transform hover:scale-110 opacity-80 hover:opacity-100 z-20" title="Lihat Layar Penuh">
+                <i class="fa-solid fa-expand text-xl md:text-2xl"></i>
+            </button>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -361,8 +368,122 @@
         <p class="text-sm text-pink-200 mt-1">Islamic Finance Insight (IFI) 2026</p>
     </footer>
 
-    <!-- Skrip untuk Auto Scroll Galeri yang Mulus -->
+    <!-- Lightbox Modal untuk Zoom Poster -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-black/95 hidden opacity-0 transition-opacity duration-300 flex-col">
+        <!-- Header Controls -->
+        <div class="absolute top-0 right-0 p-4 md:p-6 flex gap-3 z-[110] w-full justify-end bg-gradient-to-b from-black/80 to-transparent pointer-events-none">
+            <button onclick="zoomIn()" class="pointer-events-auto text-white hover:text-brand bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg" title="Zoom In"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            <button onclick="zoomOut()" class="pointer-events-auto text-white hover:text-brand bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg" title="Zoom Out"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+            <button onclick="closeLightbox()" class="pointer-events-auto text-white hover:text-red-500 bg-white/10 hover:bg-white/20 p-3 rounded-full backdrop-blur-sm transition-colors w-12 h-12 flex items-center justify-center shadow-lg ml-4" title="Tutup"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        
+        <!-- Container Scrollable -->
+        <div id="lightbox-container" class="w-full h-full overflow-auto flex items-center justify-center relative select-none">
+            <img src="poster.png" id="lightbox-img" class="h-screen w-auto max-w-none transition-all duration-200 cursor-zoom-in" alt="Poster Full AMANA" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/db2777/ffffff?text=Simpan+foto+poster+dengan+nama+poster.png';">
+        </div>
+    </div>
+
+    <!-- Skrip untuk Lightbox & Auto Scroll Galeri yang Mulus -->
     <script>
+        // === LOGIKA LIGHTBOX ZOOM POSTER ===
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxContainer = document.getElementById('lightbox-container');
+        let zoomLevel = 1;
+
+        function openLightbox() {
+            lightbox.classList.remove('hidden');
+            // Trigger reflow untuk animasi muncul
+            void lightbox.offsetWidth;
+            lightbox.classList.remove('opacity-0');
+            document.body.style.overflow = 'hidden'; // Kunci scroll halaman belakang
+            zoomLevel = 1;
+            updateZoom();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto'; // Kembalikan scroll halaman
+            }, 300);
+        }
+
+        function zoomIn() {
+            zoomLevel += 0.5;
+            if (zoomLevel > 3.5) zoomLevel = 3.5; // Maksimal zoom 3.5x
+            updateZoom();
+        }
+
+        function zoomOut() {
+            zoomLevel -= 0.5;
+            if (zoomLevel < 1) zoomLevel = 1; // Minimal zoom 1x (pas layar)
+            updateZoom();
+        }
+
+        function updateZoom() {
+            lightboxImg.style.height = `${zoomLevel * 100}vh`;
+            
+            if (zoomLevel > 1) {
+                lightboxImg.classList.remove('cursor-zoom-in');
+                lightboxImg.classList.add('cursor-grab');
+                lightboxContainer.classList.remove('items-center');
+                lightboxContainer.classList.add('items-start'); // Agar gambar memanjang dari atas ke bawah
+            } else {
+                lightboxImg.classList.add('cursor-zoom-in');
+                lightboxImg.classList.remove('cursor-grab');
+                lightboxContainer.classList.add('items-center');
+                lightboxContainer.classList.remove('items-start');
+            }
+        }
+
+        // Fitur Drag to Scroll untuk Desktop (Klik dan Tahan untuk Menggeser)
+        let isDraggingLightbox = false;
+        let startX, startY, scrollLeft, scrollTop;
+
+        lightboxContainer.addEventListener('mousedown', (e) => {
+            if (zoomLevel <= 1) return;
+            isDraggingLightbox = true;
+            lightboxImg.classList.remove('cursor-grab');
+            lightboxImg.classList.add('cursor-grabbing');
+            startX = e.pageX - lightboxContainer.offsetLeft;
+            startY = e.pageY - lightboxContainer.offsetTop;
+            scrollLeft = lightboxContainer.scrollLeft;
+            scrollTop = lightboxContainer.scrollTop;
+        });
+
+        lightboxContainer.addEventListener('mouseleave', () => {
+            isDraggingLightbox = false;
+            lightboxImg.classList.remove('cursor-grabbing');
+            if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+        });
+
+        lightboxContainer.addEventListener('mouseup', () => {
+            isDraggingLightbox = false;
+            lightboxImg.classList.remove('cursor-grabbing');
+            if(zoomLevel > 1) lightboxImg.classList.add('cursor-grab');
+        });
+
+        lightboxContainer.addEventListener('mousemove', (e) => {
+            if (!isDraggingLightbox) return;
+            e.preventDefault();
+            const x = e.pageX - lightboxContainer.offsetLeft;
+            const y = e.pageY - lightboxContainer.offsetTop;
+            const walkX = (x - startX) * 2; // Sensitivitas geser
+            const walkY = (y - startY) * 2;
+            lightboxContainer.scrollLeft = scrollLeft - walkX;
+            lightboxContainer.scrollTop = scrollTop - walkY;
+        });
+
+        // Klik gambar untuk zoom-in cepat jika masih 1x
+        lightboxImg.addEventListener('click', () => {
+            if (zoomLevel === 1) {
+                zoomIn();
+            }
+        });
+
+
+        // === LOGIKA AUTO SCROLL GALERI ===
         const gallery = document.getElementById('gallery-container');
         let isHovered = false;
         let animationId;
